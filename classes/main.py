@@ -10,7 +10,7 @@ class MyWindow(arcade.Window):
     """
     
     def __init__(self):
-        super().__init__( SCREEN_WIDTH, SCREEN_HEIGHT, 'Wordle' )
+        super().__init__( SCREEN_WIDTH, SCREEN_HEIGHT, 'Wordle Clone' )
              
 def main():
     window = MyWindow()

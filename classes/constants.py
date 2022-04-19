@@ -1,3 +1,7 @@
+"""
+This constants file is a file that holds all relevant constants for the 
+"""
+
 SCREEN_WIDTH = 600
 SCREEN_HEIGHT = 800
 
