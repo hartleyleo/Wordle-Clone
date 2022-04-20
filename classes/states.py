@@ -4,7 +4,6 @@ from word_list import choosable_word_list
 from constants import *
 import random
 import arcade.gui
-import time
 
 class PlayState ( arcade.View ):
     
