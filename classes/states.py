@@ -1,12 +1,14 @@
 import arcade
 from word_list import word_list
+from word_list import choosable_word_list
 from constants import *
 import random
 import arcade.gui
+import time
 
 class PlayState ( arcade.View ):
     
-    def __init__( self, word_list ):
+    def __init__( self, word_list, choosable_word_list ):
         super().__init__()
         
         # Establish variable for use in program
@@ -16,6 +18,7 @@ class PlayState ( arcade.View ):
         
         # word list imported from file
         self.word_list = word_list
+        self.choosable_word_list = choosable_word_list
         
         self.guess = None
         self.guess_count = None
@@ -119,43 +122,43 @@ class PlayState ( arcade.View ):
         if self.guess_count == 1:
             
             if len(self.guess) == 1:
-                arcade.draw_text( self.guess[0], 84, LINE_ONE_HEIGHT, 
+                arcade.draw_text( self.guess[0], COLUMN_ONE_WIDTH, LINE_ONE_HEIGHT, 
                          arcade.color.WHITE, font_size=25, anchor_x="center" )
                 
             if len(self.guess) == 2:
-                arcade.draw_text( self.guess[0], 84, LINE_ONE_HEIGHT, 
+                arcade.draw_text( self.guess[0], COLUMN_ONE_WIDTH, LINE_ONE_HEIGHT, 
                          arcade.color.WHITE, font_size=25, anchor_x="center" )
-                arcade.draw_text( self.guess[1], 185, LINE_ONE_HEIGHT, 
+                arcade.draw_text( self.guess[1], COLUMN_TWO_WIDTH, LINE_ONE_HEIGHT, 
                          arcade.color.WHITE, font_size=25, anchor_x="center" )
                 
             if len(self.guess) == 3:
-                arcade.draw_text( self.guess[0], 84, LINE_ONE_HEIGHT, 
+                arcade.draw_text( self.guess[0], COLUMN_ONE_WIDTH, LINE_ONE_HEIGHT, 
                          arcade.color.WHITE, font_size=25, anchor_x="center" )
-                arcade.draw_text( self.guess[1], 185, LINE_ONE_HEIGHT, 
+                arcade.draw_text( self.guess[1], COLUMN_TWO_WIDTH, LINE_ONE_HEIGHT, 
                          arcade.color.WHITE, font_size=25, anchor_x="center" )
-                arcade.draw_text( self.guess[2], 286, LINE_ONE_HEIGHT, 
+                arcade.draw_text( self.guess[2], COLUMN_THREE_WIDTH, LINE_ONE_HEIGHT, 
                          arcade.color.WHITE, font_size=25, anchor_x="center" )
             
             if len(self.guess) == 4:
-                arcade.draw_text( self.guess[0], 84, LINE_ONE_HEIGHT, 
+                arcade.draw_text( self.guess[0], COLUMN_ONE_WIDTH, LINE_ONE_HEIGHT, 
                          arcade.color.WHITE, font_size=25, anchor_x="center" )
-                arcade.draw_text( self.guess[1], 185, LINE_ONE_HEIGHT, 
+                arcade.draw_text( self.guess[1], COLUMN_TWO_WIDTH, LINE_ONE_HEIGHT, 
                          arcade.color.WHITE, font_size=25, anchor_x="center" )
-                arcade.draw_text( self.guess[2], 286, LINE_ONE_HEIGHT, 
+                arcade.draw_text( self.guess[2], COLUMN_THREE_WIDTH, LINE_ONE_HEIGHT, 
                          arcade.color.WHITE, font_size=25, anchor_x="center" )
-                arcade.draw_text( self.guess[3], 387, LINE_ONE_HEIGHT, 
+                arcade.draw_text( self.guess[3], COLUMN_FOUR_WIDTH, LINE_ONE_HEIGHT, 
                          arcade.color.WHITE, font_size=25, anchor_x="center" )
                 
             if len(self.guess) == 5:
-                arcade.draw_text( self.guess[0], 84, LINE_ONE_HEIGHT, 
+                arcade.draw_text( self.guess[0], COLUMN_ONE_WIDTH, LINE_ONE_HEIGHT, 
                          arcade.color.WHITE, font_size=25, anchor_x="center" )
-                arcade.draw_text( self.guess[1], 185, LINE_ONE_HEIGHT, 
+                arcade.draw_text( self.guess[1], COLUMN_TWO_WIDTH, LINE_ONE_HEIGHT, 
                          arcade.color.WHITE, font_size=25, anchor_x="center" )
-                arcade.draw_text( self.guess[2], 286, LINE_ONE_HEIGHT, 
+                arcade.draw_text( self.guess[2], COLUMN_THREE_WIDTH, LINE_ONE_HEIGHT, 
                          arcade.color.WHITE, font_size=25, anchor_x="center" )
-                arcade.draw_text( self.guess[3], 387, LINE_ONE_HEIGHT, 
+                arcade.draw_text( self.guess[3], COLUMN_FOUR_WIDTH, LINE_ONE_HEIGHT, 
                          arcade.color.WHITE, font_size=25, anchor_x="center" )
-                arcade.draw_text( self.guess[4], 488, LINE_ONE_HEIGHT, 
+                arcade.draw_text( self.guess[4], COLUMN_FIVE_WIDTH, LINE_ONE_HEIGHT, 
                          arcade.color.WHITE, font_size=25, anchor_x="center" )
         
         if self.guess_count == 2:
@@ -165,54 +168,54 @@ class PlayState ( arcade.View ):
             """
             for i in range( len( self.line_one_accuracy ) ):
                 if self.line_one_accuracy[i] == 'N':
-                    arcade.draw_text( self.line_one[i], i*101 + 84, LINE_ONE_HEIGHT, 
+                    arcade.draw_text( self.line_one[i], COLUMN_ONE_WIDTH + i*100, LINE_ONE_HEIGHT, 
                             arcade.color.WHITE, font_size=25, anchor_x="center" )
                 if self.line_one_accuracy[i] == 'W':
-                    arcade.draw_text( self.line_one[i], i*101 + 84, LINE_ONE_HEIGHT, 
+                    arcade.draw_text( self.line_one[i], COLUMN_ONE_WIDTH + i*100, LINE_ONE_HEIGHT, 
                             arcade.color.GOLDEN_POPPY, font_size=25, anchor_x="center" )
                 if self.line_one_accuracy[i] == 'C':
-                    arcade.draw_text( self.line_one[i], i*101 + 84, LINE_ONE_HEIGHT, 
+                    arcade.draw_text( self.line_one[i], COLUMN_ONE_WIDTH + i*100, LINE_ONE_HEIGHT, 
                             arcade.color.GO_GREEN, font_size=25, anchor_x="center" )
             
             
             if len(self.guess) == 1:
-                arcade.draw_text( self.guess[0], 84, LINE_TWO_HEIGHT, 
+                arcade.draw_text( self.guess[0], COLUMN_ONE_WIDTH, LINE_TWO_HEIGHT, 
                          arcade.color.WHITE, font_size=25, anchor_x="center" )
                 
             if len(self.guess) == 2:
-                arcade.draw_text( self.guess[0], 84, LINE_TWO_HEIGHT, 
+                arcade.draw_text( self.guess[0], COLUMN_ONE_WIDTH, LINE_TWO_HEIGHT, 
                          arcade.color.WHITE, font_size=25, anchor_x="center" )
-                arcade.draw_text( self.guess[1], 185, LINE_TWO_HEIGHT, 
+                arcade.draw_text( self.guess[1], COLUMN_TWO_WIDTH, LINE_TWO_HEIGHT, 
                          arcade.color.WHITE, font_size=25, anchor_x="center" )
                 
             if len(self.guess) == 3:
-                arcade.draw_text( self.guess[0], 84, LINE_TWO_HEIGHT, 
+                arcade.draw_text( self.guess[0], COLUMN_ONE_WIDTH, LINE_TWO_HEIGHT, 
                          arcade.color.WHITE, font_size=25, anchor_x="center" )
-                arcade.draw_text( self.guess[1], 185, LINE_TWO_HEIGHT, 
+                arcade.draw_text( self.guess[1], COLUMN_TWO_WIDTH, LINE_TWO_HEIGHT, 
                          arcade.color.WHITE, font_size=25, anchor_x="center" )
-                arcade.draw_text( self.guess[2], 286, LINE_TWO_HEIGHT, 
+                arcade.draw_text( self.guess[2], COLUMN_THREE_WIDTH, LINE_TWO_HEIGHT, 
                          arcade.color.WHITE, font_size=25, anchor_x="center" )
             
             if len(self.guess) == 4:
-                arcade.draw_text( self.guess[0], 84, LINE_TWO_HEIGHT, 
+                arcade.draw_text( self.guess[0], COLUMN_ONE_WIDTH, LINE_TWO_HEIGHT, 
                          arcade.color.WHITE, font_size=25, anchor_x="center" )
-                arcade.draw_text( self.guess[1], 185, LINE_TWO_HEIGHT, 
+                arcade.draw_text( self.guess[1], COLUMN_TWO_WIDTH, LINE_TWO_HEIGHT, 
                          arcade.color.WHITE, font_size=25, anchor_x="center" )
-                arcade.draw_text( self.guess[2], 286, LINE_TWO_HEIGHT, 
+                arcade.draw_text( self.guess[2], COLUMN_THREE_WIDTH, LINE_TWO_HEIGHT, 
                          arcade.color.WHITE, font_size=25, anchor_x="center" )
-                arcade.draw_text( self.guess[3], 387, LINE_TWO_HEIGHT, 
+                arcade.draw_text( self.guess[3], COLUMN_FOUR_WIDTH, LINE_TWO_HEIGHT, 
                          arcade.color.WHITE, font_size=25, anchor_x="center" )
                 
             if len(self.guess) == 5:
-                arcade.draw_text( self.guess[0], 84, LINE_TWO_HEIGHT, 
+                arcade.draw_text( self.guess[0], COLUMN_ONE_WIDTH, LINE_TWO_HEIGHT, 
                          arcade.color.WHITE, font_size=25, anchor_x="center" )
-                arcade.draw_text( self.guess[1], 185, LINE_TWO_HEIGHT, 
+                arcade.draw_text( self.guess[1], COLUMN_TWO_WIDTH, LINE_TWO_HEIGHT, 
                          arcade.color.WHITE, font_size=25, anchor_x="center" )
-                arcade.draw_text( self.guess[2], 286, LINE_TWO_HEIGHT, 
+                arcade.draw_text( self.guess[2], COLUMN_THREE_WIDTH, LINE_TWO_HEIGHT, 
                          arcade.color.WHITE, font_size=25, anchor_x="center" )
-                arcade.draw_text( self.guess[3], 387, LINE_TWO_HEIGHT, 
+                arcade.draw_text( self.guess[3], COLUMN_FOUR_WIDTH, LINE_TWO_HEIGHT, 
                          arcade.color.WHITE, font_size=25, anchor_x="center" )
-                arcade.draw_text( self.guess[4], 488, LINE_TWO_HEIGHT, 
+                arcade.draw_text( self.guess[4], COLUMN_FIVE_WIDTH, LINE_TWO_HEIGHT, 
                          arcade.color.WHITE, font_size=25, anchor_x="center" )
                 
         if self.guess_count == 3:
@@ -223,13 +226,13 @@ class PlayState ( arcade.View ):
             for i in range( len( self.line_one_accuracy ) ):
                 
                 if self.line_one_accuracy[i] == 'N':
-                    arcade.draw_text( self.line_one[i], i*101 + 84, LINE_ONE_HEIGHT, 
+                    arcade.draw_text( self.line_one[i], COLUMN_ONE_WIDTH + i*100, LINE_ONE_HEIGHT, 
                             arcade.color.WHITE, font_size=25, anchor_x="center" )
                 if self.line_one_accuracy[i] == 'W':
-                    arcade.draw_text( self.line_one[i], i*101 + 84, LINE_ONE_HEIGHT, 
+                    arcade.draw_text( self.line_one[i], COLUMN_ONE_WIDTH + i*100, LINE_ONE_HEIGHT, 
                             arcade.color.GOLDEN_POPPY, font_size=25, anchor_x="center" )
                 if self.line_one_accuracy[i] == 'C':
-                    arcade.draw_text( self.line_one[i], i*101 + 84, LINE_ONE_HEIGHT, 
+                    arcade.draw_text( self.line_one[i], COLUMN_ONE_WIDTH + i*100, LINE_ONE_HEIGHT, 
                             arcade.color.GO_GREEN, font_size=25, anchor_x="center" )
             
             """
@@ -238,54 +241,54 @@ class PlayState ( arcade.View ):
             for i in range( len( self.line_two_accuracy ) ):
                 
                 if self.line_two_accuracy[i] == 'N':
-                    arcade.draw_text( self.line_two[i], i*101 + 84, LINE_TWO_HEIGHT, 
+                    arcade.draw_text( self.line_two[i], COLUMN_ONE_WIDTH + i*100, LINE_TWO_HEIGHT, 
                             arcade.color.WHITE, font_size=25, anchor_x="center" )
                 if self.line_two_accuracy[i] == 'W':
-                    arcade.draw_text( self.line_two[i], i*101 + 84, LINE_TWO_HEIGHT, 
+                    arcade.draw_text( self.line_two[i], COLUMN_ONE_WIDTH + i*100, LINE_TWO_HEIGHT, 
                             arcade.color.GOLDEN_POPPY, font_size=25, anchor_x="center" )
                 if self.line_two_accuracy[i] == 'C':
-                    arcade.draw_text( self.line_two[i], i*101 + 84, LINE_TWO_HEIGHT, 
+                    arcade.draw_text( self.line_two[i], COLUMN_ONE_WIDTH + i*100, LINE_TWO_HEIGHT, 
                             arcade.color.GO_GREEN, font_size=25, anchor_x="center" )
             
             
             if len(self.guess) == 1:
-                arcade.draw_text( self.guess[0], 84, LINE_THREE_HEIGHT, 
+                arcade.draw_text( self.guess[0], COLUMN_ONE_WIDTH, LINE_THREE_HEIGHT, 
                          arcade.color.WHITE, font_size=25, anchor_x="center" )
                 
             if len(self.guess) == 2:
-                arcade.draw_text( self.guess[0], 84, LINE_THREE_HEIGHT, 
+                arcade.draw_text( self.guess[0], COLUMN_ONE_WIDTH, LINE_THREE_HEIGHT, 
                          arcade.color.WHITE, font_size=25, anchor_x="center" )
-                arcade.draw_text( self.guess[1], 185, LINE_THREE_HEIGHT, 
+                arcade.draw_text( self.guess[1], COLUMN_TWO_WIDTH, LINE_THREE_HEIGHT, 
                          arcade.color.WHITE, font_size=25, anchor_x="center" )
                 
             if len(self.guess) == 3:
-                arcade.draw_text( self.guess[0], 84, LINE_THREE_HEIGHT, 
+                arcade.draw_text( self.guess[0], COLUMN_ONE_WIDTH, LINE_THREE_HEIGHT, 
                          arcade.color.WHITE, font_size=25, anchor_x="center" )
-                arcade.draw_text( self.guess[1], 185, LINE_THREE_HEIGHT, 
+                arcade.draw_text( self.guess[1], COLUMN_TWO_WIDTH, LINE_THREE_HEIGHT, 
                          arcade.color.WHITE, font_size=25, anchor_x="center" )
-                arcade.draw_text( self.guess[2], 286, LINE_THREE_HEIGHT, 
+                arcade.draw_text( self.guess[2], COLUMN_THREE_WIDTH, LINE_THREE_HEIGHT, 
                          arcade.color.WHITE, font_size=25, anchor_x="center" )
             
             if len(self.guess) == 4:
-                arcade.draw_text( self.guess[0], 84, LINE_THREE_HEIGHT, 
+                arcade.draw_text( self.guess[0], COLUMN_ONE_WIDTH, LINE_THREE_HEIGHT, 
                          arcade.color.WHITE, font_size=25, anchor_x="center" )
-                arcade.draw_text( self.guess[1], 185, LINE_THREE_HEIGHT, 
+                arcade.draw_text( self.guess[1], COLUMN_TWO_WIDTH, LINE_THREE_HEIGHT, 
                          arcade.color.WHITE, font_size=25, anchor_x="center" )
-                arcade.draw_text( self.guess[2], 286, LINE_THREE_HEIGHT, 
+                arcade.draw_text( self.guess[2], COLUMN_THREE_WIDTH, LINE_THREE_HEIGHT, 
                          arcade.color.WHITE, font_size=25, anchor_x="center" )
-                arcade.draw_text( self.guess[3], 387, LINE_THREE_HEIGHT, 
+                arcade.draw_text( self.guess[3], COLUMN_FOUR_WIDTH, LINE_THREE_HEIGHT, 
                          arcade.color.WHITE, font_size=25, anchor_x="center" )
                 
             if len(self.guess) == 5:
-                arcade.draw_text( self.guess[0], 84, LINE_THREE_HEIGHT, 
+                arcade.draw_text( self.guess[0], COLUMN_ONE_WIDTH, LINE_THREE_HEIGHT, 
                          arcade.color.WHITE, font_size=25, anchor_x="center" )
-                arcade.draw_text( self.guess[1], 185, LINE_THREE_HEIGHT, 
+                arcade.draw_text( self.guess[1], COLUMN_TWO_WIDTH, LINE_THREE_HEIGHT, 
                          arcade.color.WHITE, font_size=25, anchor_x="center" )
-                arcade.draw_text( self.guess[2], 286, LINE_THREE_HEIGHT, 
+                arcade.draw_text( self.guess[2], COLUMN_THREE_WIDTH, LINE_THREE_HEIGHT, 
                          arcade.color.WHITE, font_size=25, anchor_x="center" )
-                arcade.draw_text( self.guess[3], 387, LINE_THREE_HEIGHT, 
+                arcade.draw_text( self.guess[3], COLUMN_FOUR_WIDTH, LINE_THREE_HEIGHT, 
                          arcade.color.WHITE, font_size=25, anchor_x="center" )
-                arcade.draw_text( self.guess[4], 488, LINE_THREE_HEIGHT, 
+                arcade.draw_text( self.guess[4], COLUMN_FIVE_WIDTH, LINE_THREE_HEIGHT, 
                          arcade.color.WHITE, font_size=25, anchor_x="center" )
                 
         if self.guess_count == 4:
@@ -296,13 +299,13 @@ class PlayState ( arcade.View ):
             for i in range( len( self.line_one_accuracy ) ):
                 
                 if self.line_one_accuracy[i] == 'N':
-                    arcade.draw_text( self.line_one[i], i*101 + 84, LINE_ONE_HEIGHT, 
+                    arcade.draw_text( self.line_one[i], COLUMN_ONE_WIDTH + i*100, LINE_ONE_HEIGHT, 
                             arcade.color.WHITE, font_size=25, anchor_x="center" )
                 if self.line_one_accuracy[i] == 'W':
-                    arcade.draw_text( self.line_one[i], i*101 + 84, LINE_ONE_HEIGHT, 
+                    arcade.draw_text( self.line_one[i], COLUMN_ONE_WIDTH + i*100, LINE_ONE_HEIGHT, 
                             arcade.color.GOLDEN_POPPY, font_size=25, anchor_x="center" )
                 if self.line_one_accuracy[i] == 'C':
-                    arcade.draw_text( self.line_one[i], i*101 + 84, LINE_ONE_HEIGHT, 
+                    arcade.draw_text( self.line_one[i], COLUMN_ONE_WIDTH + i*100, LINE_ONE_HEIGHT, 
                             arcade.color.GO_GREEN, font_size=25, anchor_x="center" )
             
             """
@@ -311,13 +314,13 @@ class PlayState ( arcade.View ):
             for i in range( len( self.line_two_accuracy ) ):
                 
                 if self.line_two_accuracy[i] == 'N':
-                    arcade.draw_text( self.line_two[i], i*101 + 84, LINE_TWO_HEIGHT, 
+                    arcade.draw_text( self.line_two[i], COLUMN_ONE_WIDTH + i*100, LINE_TWO_HEIGHT, 
                             arcade.color.WHITE, font_size=25, anchor_x="center" )
                 if self.line_two_accuracy[i] == 'W':
-                    arcade.draw_text( self.line_two[i], i*101 + 84, LINE_TWO_HEIGHT, 
+                    arcade.draw_text( self.line_two[i], COLUMN_ONE_WIDTH + i*100, LINE_TWO_HEIGHT, 
                             arcade.color.GOLDEN_POPPY, font_size=25, anchor_x="center" )
                 if self.line_two_accuracy[i] == 'C':
-                    arcade.draw_text( self.line_two[i], i*101 + 84, LINE_TWO_HEIGHT, 
+                    arcade.draw_text( self.line_two[i], COLUMN_ONE_WIDTH + i*100, LINE_TWO_HEIGHT, 
                             arcade.color.GO_GREEN, font_size=25, anchor_x="center" )
             
             """
@@ -326,53 +329,53 @@ class PlayState ( arcade.View ):
             for i in range( len( self.line_three_accuracy ) ):
                 
                 if self.line_three_accuracy[i] == 'N':
-                    arcade.draw_text( self.line_three[i], i*101 + 84, LINE_THREE_HEIGHT, 
+                    arcade.draw_text( self.line_three[i], COLUMN_ONE_WIDTH + i*100, LINE_THREE_HEIGHT, 
                             arcade.color.WHITE, font_size=25, anchor_x="center" )
                 if self.line_three_accuracy[i] == 'W':
-                    arcade.draw_text( self.line_three[i], i*101 + 84, LINE_THREE_HEIGHT, 
+                    arcade.draw_text( self.line_three[i], COLUMN_ONE_WIDTH + i*100, LINE_THREE_HEIGHT, 
                             arcade.color.GOLDEN_POPPY, font_size=25, anchor_x="center" )
                 if self.line_three_accuracy[i] == 'C':
-                    arcade.draw_text( self.line_three[i], i*101 + 84, LINE_THREE_HEIGHT, 
+                    arcade.draw_text( self.line_three[i], COLUMN_ONE_WIDTH + i*100, LINE_THREE_HEIGHT, 
                             arcade.color.GO_GREEN, font_size=25, anchor_x="center" )            
             
             if len(self.guess) == 1:
-                arcade.draw_text( self.guess[0], 84, LINE_FOUR_HEIGHT, 
+                arcade.draw_text( self.guess[0], COLUMN_ONE_WIDTH, LINE_FOUR_HEIGHT, 
                          arcade.color.WHITE, font_size=25, anchor_x="center" )
                 
             if len(self.guess) == 2:
-                arcade.draw_text( self.guess[0], 84, LINE_FOUR_HEIGHT, 
+                arcade.draw_text( self.guess[0], COLUMN_ONE_WIDTH, LINE_FOUR_HEIGHT, 
                          arcade.color.WHITE, font_size=25, anchor_x="center" )
-                arcade.draw_text( self.guess[1], 185, LINE_FOUR_HEIGHT, 
+                arcade.draw_text( self.guess[1], COLUMN_TWO_WIDTH, LINE_FOUR_HEIGHT, 
                          arcade.color.WHITE, font_size=25, anchor_x="center" )
                 
             if len(self.guess) == 3:
-                arcade.draw_text( self.guess[0], 84, LINE_FOUR_HEIGHT, 
+                arcade.draw_text( self.guess[0], COLUMN_ONE_WIDTH, LINE_FOUR_HEIGHT, 
                          arcade.color.WHITE, font_size=25, anchor_x="center" )
-                arcade.draw_text( self.guess[1], 185, LINE_FOUR_HEIGHT, 
+                arcade.draw_text( self.guess[1], COLUMN_TWO_WIDTH, LINE_FOUR_HEIGHT, 
                          arcade.color.WHITE, font_size=25, anchor_x="center" )
-                arcade.draw_text( self.guess[2], 286, LINE_FOUR_HEIGHT, 
+                arcade.draw_text( self.guess[2], COLUMN_THREE_WIDTH, LINE_FOUR_HEIGHT, 
                          arcade.color.WHITE, font_size=25, anchor_x="center" )
             
             if len(self.guess) == 4:
-                arcade.draw_text( self.guess[0], 84, LINE_FOUR_HEIGHT, 
+                arcade.draw_text( self.guess[0], COLUMN_ONE_WIDTH, LINE_FOUR_HEIGHT, 
                          arcade.color.WHITE, font_size=25, anchor_x="center" )
-                arcade.draw_text( self.guess[1], 185, LINE_FOUR_HEIGHT, 
+                arcade.draw_text( self.guess[1], COLUMN_TWO_WIDTH, LINE_FOUR_HEIGHT, 
                          arcade.color.WHITE, font_size=25, anchor_x="center" )
-                arcade.draw_text( self.guess[2], 286, LINE_FOUR_HEIGHT, 
+                arcade.draw_text( self.guess[2], COLUMN_THREE_WIDTH, LINE_FOUR_HEIGHT, 
                          arcade.color.WHITE, font_size=25, anchor_x="center" )
-                arcade.draw_text( self.guess[3], 387, LINE_FOUR_HEIGHT, 
+                arcade.draw_text( self.guess[3], COLUMN_FOUR_WIDTH, LINE_FOUR_HEIGHT, 
                          arcade.color.WHITE, font_size=25, anchor_x="center" )
                 
             if len(self.guess) == 5:
-                arcade.draw_text( self.guess[0], 84, LINE_FOUR_HEIGHT, 
+                arcade.draw_text( self.guess[0], COLUMN_ONE_WIDTH, LINE_FOUR_HEIGHT, 
                          arcade.color.WHITE, font_size=25, anchor_x="center" )
-                arcade.draw_text( self.guess[1], 185, LINE_FOUR_HEIGHT, 
+                arcade.draw_text( self.guess[1], COLUMN_TWO_WIDTH, LINE_FOUR_HEIGHT, 
                          arcade.color.WHITE, font_size=25, anchor_x="center" )
-                arcade.draw_text( self.guess[2], 286, LINE_FOUR_HEIGHT, 
+                arcade.draw_text( self.guess[2], COLUMN_THREE_WIDTH, LINE_FOUR_HEIGHT, 
                          arcade.color.WHITE, font_size=25, anchor_x="center" )
-                arcade.draw_text( self.guess[3], 387, LINE_FOUR_HEIGHT, 
+                arcade.draw_text( self.guess[3], COLUMN_FOUR_WIDTH, LINE_FOUR_HEIGHT, 
                          arcade.color.WHITE, font_size=25, anchor_x="center" )
-                arcade.draw_text( self.guess[4], 488, LINE_FOUR_HEIGHT, 
+                arcade.draw_text( self.guess[4], COLUMN_FIVE_WIDTH, LINE_FOUR_HEIGHT, 
                          arcade.color.WHITE, font_size=25, anchor_x="center" )
         
         if self.guess_count == 5:
@@ -383,13 +386,13 @@ class PlayState ( arcade.View ):
             for i in range( len( self.line_one_accuracy ) ):
                 
                 if self.line_one_accuracy[i] == 'N':
-                    arcade.draw_text( self.line_one[i], i*101 + 84, LINE_ONE_HEIGHT, 
+                    arcade.draw_text( self.line_one[i], COLUMN_ONE_WIDTH + i*100, LINE_ONE_HEIGHT, 
                             arcade.color.WHITE, font_size=25, anchor_x="center" )
                 if self.line_one_accuracy[i] == 'W':
-                    arcade.draw_text( self.line_one[i], i*101 + 84, LINE_ONE_HEIGHT, 
+                    arcade.draw_text( self.line_one[i], COLUMN_ONE_WIDTH + i*100, LINE_ONE_HEIGHT, 
                             arcade.color.GOLDEN_POPPY, font_size=25, anchor_x="center" )
                 if self.line_one_accuracy[i] == 'C':
-                    arcade.draw_text( self.line_one[i], i*101 + 84, LINE_ONE_HEIGHT, 
+                    arcade.draw_text( self.line_one[i], COLUMN_ONE_WIDTH + i*100, LINE_ONE_HEIGHT, 
                             arcade.color.GO_GREEN, font_size=25, anchor_x="center" )
             
             """
@@ -398,13 +401,13 @@ class PlayState ( arcade.View ):
             for i in range( len( self.line_two_accuracy ) ):
                 
                 if self.line_two_accuracy[i] == 'N':
-                    arcade.draw_text( self.line_two[i], i*101 + 84, LINE_TWO_HEIGHT, 
+                    arcade.draw_text( self.line_two[i], COLUMN_ONE_WIDTH + i*100, LINE_TWO_HEIGHT, 
                             arcade.color.WHITE, font_size=25, anchor_x="center" )
                 if self.line_two_accuracy[i] == 'W':
-                    arcade.draw_text( self.line_two[i], i*101 + 84, LINE_TWO_HEIGHT, 
+                    arcade.draw_text( self.line_two[i], COLUMN_ONE_WIDTH + i*100, LINE_TWO_HEIGHT, 
                             arcade.color.GOLDEN_POPPY, font_size=25, anchor_x="center" )
                 if self.line_two_accuracy[i] == 'C':
-                    arcade.draw_text( self.line_two[i], i*101 + 84, LINE_TWO_HEIGHT, 
+                    arcade.draw_text( self.line_two[i], COLUMN_ONE_WIDTH + i*100, LINE_TWO_HEIGHT, 
                             arcade.color.GO_GREEN, font_size=25, anchor_x="center" )
             
             """
@@ -413,13 +416,13 @@ class PlayState ( arcade.View ):
             for i in range( len( self.line_three_accuracy ) ):
                 
                 if self.line_three_accuracy[i] == 'N':
-                    arcade.draw_text( self.line_three[i], i*101 + 84, LINE_THREE_HEIGHT, 
+                    arcade.draw_text( self.line_three[i], COLUMN_ONE_WIDTH + i*100, LINE_THREE_HEIGHT, 
                             arcade.color.WHITE, font_size=25, anchor_x="center" )
                 if self.line_three_accuracy[i] == 'W':
-                    arcade.draw_text( self.line_three[i], i*101 + 84, LINE_THREE_HEIGHT, 
+                    arcade.draw_text( self.line_three[i], COLUMN_ONE_WIDTH + i*100, LINE_THREE_HEIGHT, 
                             arcade.color.GOLDEN_POPPY, font_size=25, anchor_x="center" )
                 if self.line_three_accuracy[i] == 'C':
-                    arcade.draw_text( self.line_three[i], i*101 + 84, LINE_THREE_HEIGHT, 
+                    arcade.draw_text( self.line_three[i], COLUMN_ONE_WIDTH + i*100, LINE_THREE_HEIGHT, 
                             arcade.color.GO_GREEN, font_size=25, anchor_x="center" )
             
             """
@@ -428,54 +431,54 @@ class PlayState ( arcade.View ):
             for i in range( len( self.line_four_accuracy ) ):
                 
                 if self.line_four_accuracy[i] == 'N':
-                    arcade.draw_text( self.line_four[i], i*101 + 84, LINE_FOUR_HEIGHT, 
+                    arcade.draw_text( self.line_four[i], COLUMN_ONE_WIDTH + i*100, LINE_FOUR_HEIGHT, 
                             arcade.color.WHITE, font_size=25, anchor_x="center" )
                 if self.line_four_accuracy[i] == 'W':
-                    arcade.draw_text( self.line_four[i], i*101 + 84, LINE_FOUR_HEIGHT, 
+                    arcade.draw_text( self.line_four[i], COLUMN_ONE_WIDTH + i*100, LINE_FOUR_HEIGHT, 
                             arcade.color.GOLDEN_POPPY, font_size=25, anchor_x="center" )
                 if self.line_four_accuracy[i] == 'C':
-                    arcade.draw_text( self.line_four[i], i*101 + 84, LINE_FOUR_HEIGHT, 
+                    arcade.draw_text( self.line_four[i], COLUMN_ONE_WIDTH + i*100, LINE_FOUR_HEIGHT, 
                             arcade.color.GO_GREEN, font_size=25, anchor_x="center" )
             
             
             if len(self.guess) == 1:
-                arcade.draw_text( self.guess[0], 84, LINE_FIVE_HEIGHT, 
+                arcade.draw_text( self.guess[0], COLUMN_ONE_WIDTH, LINE_FIVE_HEIGHT, 
                          arcade.color.WHITE, font_size=25, anchor_x="center" )
                 
             if len(self.guess) == 2:
-                arcade.draw_text( self.guess[0], 84, LINE_FIVE_HEIGHT, 
+                arcade.draw_text( self.guess[0], COLUMN_ONE_WIDTH, LINE_FIVE_HEIGHT, 
                          arcade.color.WHITE, font_size=25, anchor_x="center" )
-                arcade.draw_text( self.guess[1], 185, LINE_FIVE_HEIGHT, 
+                arcade.draw_text( self.guess[1], COLUMN_TWO_WIDTH, LINE_FIVE_HEIGHT, 
                          arcade.color.WHITE, font_size=25, anchor_x="center" )
                 
             if len(self.guess) == 3:
-                arcade.draw_text( self.guess[0], 84, LINE_FIVE_HEIGHT, 
+                arcade.draw_text( self.guess[0], COLUMN_ONE_WIDTH, LINE_FIVE_HEIGHT, 
                          arcade.color.WHITE, font_size=25, anchor_x="center" )
-                arcade.draw_text( self.guess[1], 185, LINE_FIVE_HEIGHT, 
+                arcade.draw_text( self.guess[1], COLUMN_TWO_WIDTH, LINE_FIVE_HEIGHT, 
                          arcade.color.WHITE, font_size=25, anchor_x="center" )
-                arcade.draw_text( self.guess[2], 286, LINE_FIVE_HEIGHT, 
+                arcade.draw_text( self.guess[2], COLUMN_THREE_WIDTH, LINE_FIVE_HEIGHT, 
                          arcade.color.WHITE, font_size=25, anchor_x="center" )
             
             if len(self.guess) == 4:
-                arcade.draw_text( self.guess[0], 84, LINE_FIVE_HEIGHT, 
+                arcade.draw_text( self.guess[0], COLUMN_ONE_WIDTH, LINE_FIVE_HEIGHT, 
                          arcade.color.WHITE, font_size=25, anchor_x="center" )
-                arcade.draw_text( self.guess[1], 185, LINE_FIVE_HEIGHT, 
+                arcade.draw_text( self.guess[1], COLUMN_TWO_WIDTH, LINE_FIVE_HEIGHT, 
                          arcade.color.WHITE, font_size=25, anchor_x="center" )
-                arcade.draw_text( self.guess[2], 286, LINE_FIVE_HEIGHT, 
+                arcade.draw_text( self.guess[2], COLUMN_THREE_WIDTH, LINE_FIVE_HEIGHT, 
                          arcade.color.WHITE, font_size=25, anchor_x="center" )
-                arcade.draw_text( self.guess[3], 387, LINE_FIVE_HEIGHT, 
+                arcade.draw_text( self.guess[3], COLUMN_FOUR_WIDTH, LINE_FIVE_HEIGHT, 
                          arcade.color.WHITE, font_size=25, anchor_x="center" )
                 
             if len(self.guess) == 5:
-                arcade.draw_text( self.guess[0], 84, LINE_FIVE_HEIGHT, 
+                arcade.draw_text( self.guess[0], COLUMN_ONE_WIDTH, LINE_FIVE_HEIGHT, 
                          arcade.color.WHITE, font_size=25, anchor_x="center" )
-                arcade.draw_text( self.guess[1], 185, LINE_FIVE_HEIGHT, 
+                arcade.draw_text( self.guess[1], COLUMN_TWO_WIDTH, LINE_FIVE_HEIGHT, 
                          arcade.color.WHITE, font_size=25, anchor_x="center" )
-                arcade.draw_text( self.guess[2], 286, LINE_FIVE_HEIGHT, 
+                arcade.draw_text( self.guess[2], COLUMN_THREE_WIDTH, LINE_FIVE_HEIGHT, 
                          arcade.color.WHITE, font_size=25, anchor_x="center" )
-                arcade.draw_text( self.guess[3], 387, LINE_FIVE_HEIGHT, 
+                arcade.draw_text( self.guess[3], COLUMN_FOUR_WIDTH, LINE_FIVE_HEIGHT, 
                          arcade.color.WHITE, font_size=25, anchor_x="center" )
-                arcade.draw_text( self.guess[4], 488, LINE_FIVE_HEIGHT, 
+                arcade.draw_text( self.guess[4], COLUMN_FIVE_WIDTH, LINE_FIVE_HEIGHT, 
                          arcade.color.WHITE, font_size=25, anchor_x="center" )
         
         if self.guess_count == 6:
@@ -486,13 +489,13 @@ class PlayState ( arcade.View ):
             for i in range( len( self.line_one_accuracy ) ):
                 
                 if self.line_one_accuracy[i] == 'N':
-                    arcade.draw_text( self.line_one[i], i*101 + 84, LINE_ONE_HEIGHT, 
+                    arcade.draw_text( self.line_one[i], COLUMN_ONE_WIDTH + i*100, LINE_ONE_HEIGHT, 
                             arcade.color.WHITE, font_size=25, anchor_x="center" )
                 if self.line_one_accuracy[i] == 'W':
-                    arcade.draw_text( self.line_one[i], i*101 + 84, LINE_ONE_HEIGHT, 
+                    arcade.draw_text( self.line_one[i], COLUMN_ONE_WIDTH + i*100, LINE_ONE_HEIGHT, 
                             arcade.color.GOLDEN_POPPY, font_size=25, anchor_x="center" )
                 if self.line_one_accuracy[i] == 'C':
-                    arcade.draw_text( self.line_one[i], i*101 + 84, LINE_ONE_HEIGHT, 
+                    arcade.draw_text( self.line_one[i], COLUMN_ONE_WIDTH + i*100, LINE_ONE_HEIGHT, 
                             arcade.color.GO_GREEN, font_size=25, anchor_x="center" )
             
             """
@@ -501,13 +504,13 @@ class PlayState ( arcade.View ):
             for i in range( len( self.line_two_accuracy ) ):
                 
                 if self.line_two_accuracy[i] == 'N':
-                    arcade.draw_text( self.line_two[i], i*101 + 84, LINE_TWO_HEIGHT, 
+                    arcade.draw_text( self.line_two[i], COLUMN_ONE_WIDTH + i*100, LINE_TWO_HEIGHT, 
                             arcade.color.WHITE, font_size=25, anchor_x="center" )
                 if self.line_two_accuracy[i] == 'W':
-                    arcade.draw_text( self.line_two[i], i*101 + 84, LINE_TWO_HEIGHT, 
+                    arcade.draw_text( self.line_two[i], COLUMN_ONE_WIDTH + i*100, LINE_TWO_HEIGHT, 
                             arcade.color.GOLDEN_POPPY, font_size=25, anchor_x="center" )
                 if self.line_two_accuracy[i] == 'C':
-                    arcade.draw_text( self.line_two[i], i*101 + 84, LINE_TWO_HEIGHT, 
+                    arcade.draw_text( self.line_two[i], COLUMN_ONE_WIDTH + i*100, LINE_TWO_HEIGHT, 
                             arcade.color.GO_GREEN, font_size=25, anchor_x="center" )
             
             """
@@ -516,13 +519,13 @@ class PlayState ( arcade.View ):
             for i in range( len( self.line_three_accuracy ) ):
                 
                 if self.line_three_accuracy[i] == 'N':
-                    arcade.draw_text( self.line_three[i], i*101 + 84, LINE_THREE_HEIGHT, 
+                    arcade.draw_text( self.line_three[i], COLUMN_ONE_WIDTH + i*100, LINE_THREE_HEIGHT, 
                             arcade.color.WHITE, font_size=25, anchor_x="center" )
                 if self.line_three_accuracy[i] == 'W':
-                    arcade.draw_text( self.line_three[i], i*101 + 84, LINE_THREE_HEIGHT, 
+                    arcade.draw_text( self.line_three[i], COLUMN_ONE_WIDTH + i*100, LINE_THREE_HEIGHT, 
                             arcade.color.GOLDEN_POPPY, font_size=25, anchor_x="center" )
                 if self.line_three_accuracy[i] == 'C':
-                    arcade.draw_text( self.line_three[i], i*101 + 84, LINE_THREE_HEIGHT, 
+                    arcade.draw_text( self.line_three[i], COLUMN_ONE_WIDTH + i*100, LINE_THREE_HEIGHT, 
                             arcade.color.GO_GREEN, font_size=25, anchor_x="center" )
             
             """
@@ -531,13 +534,13 @@ class PlayState ( arcade.View ):
             for i in range( len( self.line_four_accuracy ) ):
                 
                 if self.line_four_accuracy[i] == 'N':
-                    arcade.draw_text( self.line_four[i], i*101 + 84, LINE_FOUR_HEIGHT, 
+                    arcade.draw_text( self.line_four[i], COLUMN_ONE_WIDTH + i*100, LINE_FOUR_HEIGHT, 
                             arcade.color.WHITE, font_size=25, anchor_x="center" )
                 if self.line_four_accuracy[i] == 'W':
-                    arcade.draw_text( self.line_four[i], i*101 + 84, LINE_FOUR_HEIGHT, 
+                    arcade.draw_text( self.line_four[i], COLUMN_ONE_WIDTH + i*100, LINE_FOUR_HEIGHT, 
                             arcade.color.GOLDEN_POPPY, font_size=25, anchor_x="center" )
                 if self.line_four_accuracy[i] == 'C':
-                    arcade.draw_text( self.line_four[i], i*101 + 84, LINE_FOUR_HEIGHT, 
+                    arcade.draw_text( self.line_four[i], COLUMN_ONE_WIDTH + i*100, LINE_FOUR_HEIGHT, 
                             arcade.color.GO_GREEN, font_size=25, anchor_x="center" )
             
             """
@@ -546,53 +549,53 @@ class PlayState ( arcade.View ):
             for i in range( len( self.line_five_accuracy ) ):
                 
                 if self.line_five_accuracy[i] == 'N':
-                    arcade.draw_text( self.line_five[i], i*101 + 84, LINE_FIVE_HEIGHT, 
+                    arcade.draw_text( self.line_five[i], COLUMN_ONE_WIDTH + i*100, LINE_FIVE_HEIGHT, 
                             arcade.color.WHITE, font_size=25, anchor_x="center" )
                 if self.line_five_accuracy[i] == 'W':
-                    arcade.draw_text( self.line_five[i], i*101 + 84, LINE_FIVE_HEIGHT, 
+                    arcade.draw_text( self.line_five[i], COLUMN_ONE_WIDTH + i*100, LINE_FIVE_HEIGHT, 
                             arcade.color.GOLDEN_POPPY, font_size=25, anchor_x="center" )
                 if self.line_five_accuracy[i] == 'C':
-                    arcade.draw_text( self.line_five[i], i*101 + 84, LINE_FIVE_HEIGHT, 
+                    arcade.draw_text( self.line_five[i], COLUMN_ONE_WIDTH + i*100, LINE_FIVE_HEIGHT, 
                             arcade.color.GO_GREEN, font_size=25, anchor_x="center" )
             
             if len(self.guess) == 1:
-                arcade.draw_text( self.guess[0], 84, LINE_SIX_HEIGHT, 
+                arcade.draw_text( self.guess[0], COLUMN_ONE_WIDTH, LINE_SIX_HEIGHT, 
                          arcade.color.WHITE, font_size=25, anchor_x="center" )
                 
             if len(self.guess) == 2:
-                arcade.draw_text( self.guess[0], 84, LINE_SIX_HEIGHT, 
+                arcade.draw_text( self.guess[0], COLUMN_ONE_WIDTH, LINE_SIX_HEIGHT, 
                          arcade.color.WHITE, font_size=25, anchor_x="center" )
-                arcade.draw_text( self.guess[1], 185, LINE_SIX_HEIGHT, 
+                arcade.draw_text( self.guess[1], COLUMN_TWO_WIDTH, LINE_SIX_HEIGHT, 
                          arcade.color.WHITE, font_size=25, anchor_x="center" )
                 
             if len(self.guess) == 3:
-                arcade.draw_text( self.guess[0], 84, LINE_SIX_HEIGHT, 
+                arcade.draw_text( self.guess[0], COLUMN_ONE_WIDTH, LINE_SIX_HEIGHT, 
                          arcade.color.WHITE, font_size=25, anchor_x="center" )
-                arcade.draw_text( self.guess[1], 185, LINE_SIX_HEIGHT, 
+                arcade.draw_text( self.guess[1], COLUMN_TWO_WIDTH, LINE_SIX_HEIGHT, 
                          arcade.color.WHITE, font_size=25, anchor_x="center" )
-                arcade.draw_text( self.guess[2], 286, LINE_SIX_HEIGHT, 
+                arcade.draw_text( self.guess[2], COLUMN_THREE_WIDTH, LINE_SIX_HEIGHT, 
                          arcade.color.WHITE, font_size=25, anchor_x="center" )
             
             if len(self.guess) == 4:
-                arcade.draw_text( self.guess[0], 84, LINE_SIX_HEIGHT, 
+                arcade.draw_text( self.guess[0], COLUMN_ONE_WIDTH, LINE_SIX_HEIGHT, 
                          arcade.color.WHITE, font_size=25, anchor_x="center" )
-                arcade.draw_text( self.guess[1], 185, LINE_SIX_HEIGHT, 
+                arcade.draw_text( self.guess[1], COLUMN_TWO_WIDTH, LINE_SIX_HEIGHT, 
                          arcade.color.WHITE, font_size=25, anchor_x="center" )
-                arcade.draw_text( self.guess[2], 286, LINE_SIX_HEIGHT, 
+                arcade.draw_text( self.guess[2], COLUMN_THREE_WIDTH, LINE_SIX_HEIGHT, 
                          arcade.color.WHITE, font_size=25, anchor_x="center" )
-                arcade.draw_text( self.guess[3], 387, LINE_SIX_HEIGHT, 
+                arcade.draw_text( self.guess[3], COLUMN_FOUR_WIDTH, LINE_SIX_HEIGHT, 
                          arcade.color.WHITE, font_size=25, anchor_x="center" )
                 
             if len(self.guess) == 5:
-                arcade.draw_text( self.guess[0], 84, LINE_SIX_HEIGHT, 
+                arcade.draw_text( self.guess[0], COLUMN_ONE_WIDTH, LINE_SIX_HEIGHT, 
                          arcade.color.WHITE, font_size=25, anchor_x="center" )
-                arcade.draw_text( self.guess[1], 185, LINE_SIX_HEIGHT, 
+                arcade.draw_text( self.guess[1], COLUMN_TWO_WIDTH, LINE_SIX_HEIGHT, 
                          arcade.color.WHITE, font_size=25, anchor_x="center" )
-                arcade.draw_text( self.guess[2], 286, LINE_SIX_HEIGHT, 
+                arcade.draw_text( self.guess[2], COLUMN_THREE_WIDTH, LINE_SIX_HEIGHT, 
                          arcade.color.WHITE, font_size=25, anchor_x="center" )
-                arcade.draw_text( self.guess[3], 387, LINE_SIX_HEIGHT, 
+                arcade.draw_text( self.guess[3], COLUMN_FOUR_WIDTH, LINE_SIX_HEIGHT, 
                          arcade.color.WHITE, font_size=25, anchor_x="center" )
-                arcade.draw_text( self.guess[4], 488, LINE_SIX_HEIGHT, 
+                arcade.draw_text( self.guess[4], COLUMN_FIVE_WIDTH, LINE_SIX_HEIGHT, 
                          arcade.color.WHITE, font_size=25, anchor_x="center" )
         
         if self.guess_count > 6:
@@ -603,13 +606,13 @@ class PlayState ( arcade.View ):
             for i in range( len( self.line_one_accuracy ) ):
                 
                 if self.line_one_accuracy[i] == 'N':
-                    arcade.draw_text( self.line_one[i], i*101 + 84, LINE_ONE_HEIGHT, 
+                    arcade.draw_text( self.line_one[i], COLUMN_ONE_WIDTH + i*100, LINE_ONE_HEIGHT, 
                             arcade.color.WHITE, font_size=25, anchor_x="center" )
                 if self.line_one_accuracy[i] == 'W':
-                    arcade.draw_text( self.line_one[i], i*101 + 84, LINE_ONE_HEIGHT, 
+                    arcade.draw_text( self.line_one[i], COLUMN_ONE_WIDTH + i*100, LINE_ONE_HEIGHT, 
                             arcade.color.GOLDEN_POPPY, font_size=25, anchor_x="center" )
                 if self.line_one_accuracy[i] == 'C':
-                    arcade.draw_text( self.line_one[i], i*101 + 84, LINE_ONE_HEIGHT, 
+                    arcade.draw_text( self.line_one[i], COLUMN_ONE_WIDTH + i*100, LINE_ONE_HEIGHT, 
                             arcade.color.GO_GREEN, font_size=25, anchor_x="center" )
             
             """
@@ -618,13 +621,13 @@ class PlayState ( arcade.View ):
             for i in range( len( self.line_two_accuracy ) ):
                 
                 if self.line_two_accuracy[i] == 'N':
-                    arcade.draw_text( self.line_two[i], i*101 + 84, LINE_TWO_HEIGHT, 
+                    arcade.draw_text( self.line_two[i], COLUMN_ONE_WIDTH + i*100, LINE_TWO_HEIGHT, 
                             arcade.color.WHITE, font_size=25, anchor_x="center" )
                 if self.line_two_accuracy[i] == 'W':
-                    arcade.draw_text( self.line_two[i], i*101 + 84, LINE_TWO_HEIGHT, 
+                    arcade.draw_text( self.line_two[i], COLUMN_ONE_WIDTH + i*100, LINE_TWO_HEIGHT, 
                             arcade.color.GOLDEN_POPPY, font_size=25, anchor_x="center" )
                 if self.line_two_accuracy[i] == 'C':
-                    arcade.draw_text( self.line_two[i], i*101 + 84, LINE_TWO_HEIGHT, 
+                    arcade.draw_text( self.line_two[i], COLUMN_ONE_WIDTH + i*100, LINE_TWO_HEIGHT, 
                             arcade.color.GO_GREEN, font_size=25, anchor_x="center" )
             
             """
@@ -633,13 +636,13 @@ class PlayState ( arcade.View ):
             for i in range( len( self.line_three_accuracy ) ):
                 
                 if self.line_three_accuracy[i] == 'N':
-                    arcade.draw_text( self.line_three[i], i*101 + 84, LINE_THREE_HEIGHT, 
+                    arcade.draw_text( self.line_three[i], COLUMN_ONE_WIDTH + i*100, LINE_THREE_HEIGHT, 
                             arcade.color.WHITE, font_size=25, anchor_x="center" )
                 if self.line_three_accuracy[i] == 'W':
-                    arcade.draw_text( self.line_three[i], i*101 + 84, LINE_THREE_HEIGHT, 
+                    arcade.draw_text( self.line_three[i], COLUMN_ONE_WIDTH + i*100, LINE_THREE_HEIGHT, 
                             arcade.color.GOLDEN_POPPY, font_size=25, anchor_x="center" )
                 if self.line_three_accuracy[i] == 'C':
-                    arcade.draw_text( self.line_three[i], i*101 + 84, LINE_THREE_HEIGHT, 
+                    arcade.draw_text( self.line_three[i], COLUMN_ONE_WIDTH + i*100, LINE_THREE_HEIGHT, 
                             arcade.color.GO_GREEN, font_size=25, anchor_x="center" )
             
             """
@@ -648,13 +651,13 @@ class PlayState ( arcade.View ):
             for i in range( len( self.line_four_accuracy ) ):
                 
                 if self.line_four_accuracy[i] == 'N':
-                    arcade.draw_text( self.line_four[i], i*101 + 84, LINE_FOUR_HEIGHT, 
+                    arcade.draw_text( self.line_four[i], COLUMN_ONE_WIDTH + i*100, LINE_FOUR_HEIGHT, 
                             arcade.color.WHITE, font_size=25, anchor_x="center" )
                 if self.line_four_accuracy[i] == 'W':
-                    arcade.draw_text( self.line_four[i], i*101 + 84, LINE_FOUR_HEIGHT, 
+                    arcade.draw_text( self.line_four[i], COLUMN_ONE_WIDTH + i*100, LINE_FOUR_HEIGHT, 
                             arcade.color.GOLDEN_POPPY, font_size=25, anchor_x="center" )
                 if self.line_four_accuracy[i] == 'C':
-                    arcade.draw_text( self.line_four[i], i*101 + 84, LINE_FOUR_HEIGHT, 
+                    arcade.draw_text( self.line_four[i], COLUMN_ONE_WIDTH + i*100, LINE_FOUR_HEIGHT, 
                             arcade.color.GO_GREEN, font_size=25, anchor_x="center" )
             
             """
@@ -663,13 +666,13 @@ class PlayState ( arcade.View ):
             for i in range( len( self.line_five_accuracy ) ):
                 
                 if self.line_five_accuracy[i] == 'N':
-                    arcade.draw_text( self.line_five[i], i*101 + 84, LINE_FIVE_HEIGHT, 
+                    arcade.draw_text( self.line_five[i], COLUMN_ONE_WIDTH + i*100, LINE_FIVE_HEIGHT, 
                             arcade.color.WHITE, font_size=25, anchor_x="center" )
                 if self.line_five_accuracy[i] == 'W':
-                    arcade.draw_text( self.line_five[i], i*101 + 84, LINE_FIVE_HEIGHT, 
+                    arcade.draw_text( self.line_five[i], COLUMN_ONE_WIDTH + i*100, LINE_FIVE_HEIGHT, 
                             arcade.color.GOLDEN_POPPY, font_size=25, anchor_x="center" )
                 if self.line_five_accuracy[i] == 'C':
-                    arcade.draw_text( self.line_five[i], i*101 + 84, LINE_FIVE_HEIGHT, 
+                    arcade.draw_text( self.line_five[i], COLUMN_ONE_WIDTH + i*100, LINE_FIVE_HEIGHT, 
                             arcade.color.GO_GREEN, font_size=25, anchor_x="center" )
             
             """
@@ -678,13 +681,13 @@ class PlayState ( arcade.View ):
             for i in range( len( self.line_six_accuracy ) ):
                 
                 if self.line_six_accuracy[i] == 'N':
-                    arcade.draw_text( self.line_five[i], i*101 + 84, LINE_FIVE_HEIGHT, 
+                    arcade.draw_text( self.line_five[i], COLUMN_ONE_WIDTH + i*100, LINE_FIVE_HEIGHT, 
                             arcade.color.WHITE, font_size=25, anchor_x="center" )
                 if self.line_six_accuracy[i] == 'W':
-                    arcade.draw_text( self.line_five[i], i*101 + 84, LINE_SIX_HEIGHT, 
+                    arcade.draw_text( self.line_five[i], COLUMN_ONE_WIDTH + i*100, LINE_SIX_HEIGHT, 
                             arcade.color.GOLDEN_POPPY, font_size=25, anchor_x="center" )
                 if self.line_six_accuracy[i] == 'C':
-                    arcade.draw_text( self.line_five[i], i*101 + 84, LINE_SIX_HEIGHT, 
+                    arcade.draw_text( self.line_five[i], COLUMN_ONE_WIDTH + i*100, LINE_SIX_HEIGHT, 
                             arcade.color.GO_GREEN, font_size=25, anchor_x="center" )
         
     def on_update( self, delta_time ):
@@ -711,50 +714,50 @@ class PlayState ( arcade.View ):
         """
         Function randomly chooses a word from the imported word list to be used
         """
-        index = random.randint( 0, len( self.word_list ) )
-        return self.word_list[index]
+        index = random.randint( 0, len( self.choosable_word_list ) - 1 )
+        return self.choosable_word_list[index]
         
     def check_word( self ):
         """
         Function to determine if the word is correct or not, and handle them appropriately
         """
-    
-        # Checks if the word is a valid guess ( length is 5, and in the word list )
-        if self.word_is_valid():
-            
-            # If the guess is correct
-            if self.guess == self.chosen_word: 
+        
+        # If the guess is correct
+        if self.guess == self.chosen_word: 
                 
-                # Loads the end state and displays it
+             # Loads the end state and displays it
+            new_state = GameOverState( self.guess_count, self.chosen_word )
+            new_state.setup()
+            self.window.show_view( new_state )
+                
+        # If the guess is a word but not the right one
+        else:
+                
+            if self.guess_count == 6:
+                """
+                END THE GAME, OUT OF GUESSES
+                """
                 new_state = GameOverState( self.guess_count, self.chosen_word )
                 new_state.setup()
                 self.window.show_view( new_state )
                 
-            # If the guess is a word but not the right one
-            else:
+            # Gets the accuracy of the guessed word
+            word_accuracy = self.get_guess_index_accuracy()
                 
-                # Gets the accuracy of the guessed word
-                word_accuracy = self.get_guess_index_accuracy()
-                
-                if self.guess_count == 1:
-                    self.line_one_accuracy = word_accuracy
-                elif self.guess_count == 2:
-                    self.line_two_accuracy = word_accuracy
-                elif self.guess_count == 3:
-                    self.line_three_accuracy = word_accuracy
-                elif self.guess_count == 4:
-                    self.line_four_accuracy = word_accuracy
-                elif self.guess_count == 5:
-                    self.line_five_accuracy = word_accuracy
-                elif self.guess_count == 6:
-                    self.line_six_accuracy = word_accuracy
-            
-        else:
-            pass
-        """
-        PLEASE DEAR GOD THIS IS IF THE GUESS IS NOT IN THE LSIT FIX ME
-        """
-            
+            # Set the word accuracy for drawing purposes
+            if self.guess_count == 1:
+                self.line_one_accuracy = word_accuracy
+            elif self.guess_count == 2:
+                self.line_two_accuracy = word_accuracy
+            elif self.guess_count == 3:
+                self.line_three_accuracy = word_accuracy
+            elif self.guess_count == 4:
+                self.line_four_accuracy = word_accuracy
+            elif self.guess_count == 5:
+                self.line_five_accuracy = word_accuracy
+            elif self.guess_count == 6:
+                self.line_six_accuracy = word_accuracy
+                           
     def get_guess_index_accuracy( self ):
         """
         Function creates a list with all letters either correct, in the wrong spot, or not in the word
@@ -806,7 +809,7 @@ class PlayState ( arcade.View ):
         """"
         Function checks to see if the word is valid to be checked: in the word list
         """
-        if self.guess in self.word_list:
+        if self.guess in self.word_list or self.guess in self.choosable_word_list:
             return True
     
     def guess_length_full( self, guess ):
@@ -815,7 +818,7 @@ class PlayState ( arcade.View ):
         """
         if len( guess ) == 5:
             return True
-    
+       
     def on_key_press( self, key, modifiers ):
         """Called whenever a key is pressed. """
 
@@ -824,9 +827,13 @@ class PlayState ( arcade.View ):
             
         if key == arcade.key.ENTER:
             if self.guess_length_full( self.guess ):
-                self.check_word()
-                self.guess = ''
-                self.guess_count += 1
+                
+                # Checks if the word is a valid guess ( length is 5, and in the word list )
+                if self.word_is_valid():
+                    self.check_word()
+                    self.guess = ''
+                    self.guess_count += 1
+                    
             else:
                 pass
 
@@ -980,7 +987,7 @@ class GameOverState ( arcade.View ):
         def on_click_start(event):
             
             # Creates state, sets it up, and then shows it to the screen, also disables the buttons
-            new_state = PlayState( word_list )
+            new_state = PlayState( word_list, choosable_word_list )
             new_state.setup()
             self.manager.disable()
             self.window.show_view( new_state )

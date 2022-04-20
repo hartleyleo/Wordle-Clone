@@ -1,6 +1,7 @@
 import arcade
 from constants import *
 from word_list import word_list
+from word_list import choosable_word_list
 from states import PlayState
 
 class MyWindow(arcade.Window):
@@ -16,7 +17,7 @@ def main():
     window = MyWindow()
     window.center_window()
     
-    play_state = PlayState( word_list )
+    play_state = PlayState( word_list, choosable_word_list )
     play_state.setup()
     window.show_view( play_state )
     
