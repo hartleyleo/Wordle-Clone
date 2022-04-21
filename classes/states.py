@@ -114,6 +114,101 @@ class PlayState ( arcade.View ):
         # Draws the letters and guesses
         self.draw_letters_to_screen()
     
+    def draw_line_one( self ):
+        """
+        Function to draw the first line of text
+        """
+        for i in range( len( self.line_one_accuracy ) ):
+                if self.line_one_accuracy[i] == 'N':
+                    arcade.draw_text( self.line_one[i], COLUMN_ONE_WIDTH + i*100, LINE_ONE_HEIGHT, 
+                            arcade.color.WHITE, font_size=25, anchor_x="center" )
+                if self.line_one_accuracy[i] == 'W':
+                    arcade.draw_text( self.line_one[i], COLUMN_ONE_WIDTH + i*100, LINE_ONE_HEIGHT, 
+                            arcade.color.GOLDEN_POPPY, font_size=25, anchor_x="center" )
+                if self.line_one_accuracy[i] == 'C':
+                    arcade.draw_text( self.line_one[i], COLUMN_ONE_WIDTH + i*100, LINE_ONE_HEIGHT, 
+                            arcade.color.GO_GREEN, font_size=25, anchor_x="center" )
+    
+    def draw_line_two( self ):
+        """
+        Function to draw the second line of text
+        """
+        for i in range( len( self.line_two_accuracy ) ):
+                
+                if self.line_two_accuracy[i] == 'N':
+                    arcade.draw_text( self.line_two[i], COLUMN_ONE_WIDTH + i*100, LINE_TWO_HEIGHT, 
+                            arcade.color.WHITE, font_size=25, anchor_x="center" )
+                if self.line_two_accuracy[i] == 'W':
+                    arcade.draw_text( self.line_two[i], COLUMN_ONE_WIDTH + i*100, LINE_TWO_HEIGHT, 
+                            arcade.color.GOLDEN_POPPY, font_size=25, anchor_x="center" )
+                if self.line_two_accuracy[i] == 'C':
+                    arcade.draw_text( self.line_two[i], COLUMN_ONE_WIDTH + i*100, LINE_TWO_HEIGHT, 
+                            arcade.color.GO_GREEN, font_size=25, anchor_x="center" )
+    
+    def draw_line_three( self ):
+        """
+        Function to draw the second line of text
+        """
+        for i in range( len( self.line_three_accuracy ) ):
+                
+                if self.line_three_accuracy[i] == 'N':
+                    arcade.draw_text( self.line_three[i], COLUMN_ONE_WIDTH + i*100, LINE_THREE_HEIGHT, 
+                            arcade.color.WHITE, font_size=25, anchor_x="center" )
+                if self.line_three_accuracy[i] == 'W':
+                    arcade.draw_text( self.line_three[i], COLUMN_ONE_WIDTH + i*100, LINE_THREE_HEIGHT, 
+                            arcade.color.GOLDEN_POPPY, font_size=25, anchor_x="center" )
+                if self.line_three_accuracy[i] == 'C':
+                    arcade.draw_text( self.line_three[i], COLUMN_ONE_WIDTH + i*100, LINE_THREE_HEIGHT, 
+                            arcade.color.GO_GREEN, font_size=25, anchor_x="center" ) 
+    
+    def draw_line_four( self ):
+        """
+        Function to draw the second line of text
+        """
+        for i in range( len( self.line_four_accuracy ) ):
+                
+                if self.line_four_accuracy[i] == 'N':
+                    arcade.draw_text( self.line_four[i], COLUMN_ONE_WIDTH + i*100, LINE_FOUR_HEIGHT, 
+                            arcade.color.WHITE, font_size=25, anchor_x="center" )
+                if self.line_four_accuracy[i] == 'W':
+                    arcade.draw_text( self.line_four[i], COLUMN_ONE_WIDTH + i*100, LINE_FOUR_HEIGHT, 
+                            arcade.color.GOLDEN_POPPY, font_size=25, anchor_x="center" )
+                if self.line_four_accuracy[i] == 'C':
+                    arcade.draw_text( self.line_four[i], COLUMN_ONE_WIDTH + i*100, LINE_FOUR_HEIGHT, 
+                            arcade.color.GO_GREEN, font_size=25, anchor_x="center" )
+    
+    def draw_line_five( self ):
+        """
+        Function to draw the second line of text
+        """
+        for i in range( len( self.line_five_accuracy ) ):
+                
+                if self.line_five_accuracy[i] == 'N':
+                    arcade.draw_text( self.line_five[i], COLUMN_ONE_WIDTH + i*100, LINE_FIVE_HEIGHT, 
+                            arcade.color.WHITE, font_size=25, anchor_x="center" )
+                if self.line_five_accuracy[i] == 'W':
+                    arcade.draw_text( self.line_five[i], COLUMN_ONE_WIDTH + i*100, LINE_FIVE_HEIGHT, 
+                            arcade.color.GOLDEN_POPPY, font_size=25, anchor_x="center" )
+                if self.line_five_accuracy[i] == 'C':
+                    arcade.draw_text( self.line_five[i], COLUMN_ONE_WIDTH + i*100, LINE_FIVE_HEIGHT, 
+                            arcade.color.GO_GREEN, font_size=25, anchor_x="center" )
+    
+    def draw_line_six( self ):
+        """
+        Function to draw the second line of text
+        """
+        for i in range( len( self.line_six_accuracy ) ):
+                
+                if self.line_six_accuracy[i] == 'N':
+                    arcade.draw_text( self.line_five[i], COLUMN_ONE_WIDTH + i*100, LINE_FIVE_HEIGHT, 
+                            arcade.color.WHITE, font_size=25, anchor_x="center" )
+                if self.line_six_accuracy[i] == 'W':
+                    arcade.draw_text( self.line_five[i], COLUMN_ONE_WIDTH + i*100, LINE_SIX_HEIGHT, 
+                            arcade.color.GOLDEN_POPPY, font_size=25, anchor_x="center" )
+                if self.line_six_accuracy[i] == 'C':
+                    arcade.draw_text( self.line_five[i], COLUMN_ONE_WIDTH + i*100, LINE_SIX_HEIGHT, 
+                            arcade.color.GO_GREEN, font_size=25, anchor_x="center" )
+    
     def draw_letters_to_screen( self ):
         """
         Function to draw letters to the screen, and shows their accuracy after each guess
@@ -165,16 +260,7 @@ class PlayState ( arcade.View ):
             """
             Draw the first line
             """
-            for i in range( len( self.line_one_accuracy ) ):
-                if self.line_one_accuracy[i] == 'N':
-                    arcade.draw_text( self.line_one[i], COLUMN_ONE_WIDTH + i*100, LINE_ONE_HEIGHT, 
-                            arcade.color.WHITE, font_size=25, anchor_x="center" )
-                if self.line_one_accuracy[i] == 'W':
-                    arcade.draw_text( self.line_one[i], COLUMN_ONE_WIDTH + i*100, LINE_ONE_HEIGHT, 
-                            arcade.color.GOLDEN_POPPY, font_size=25, anchor_x="center" )
-                if self.line_one_accuracy[i] == 'C':
-                    arcade.draw_text( self.line_one[i], COLUMN_ONE_WIDTH + i*100, LINE_ONE_HEIGHT, 
-                            arcade.color.GO_GREEN, font_size=25, anchor_x="center" )
+            self.draw_line_one()
             
             
             if len(self.guess) == 1:
@@ -222,32 +308,12 @@ class PlayState ( arcade.View ):
             """
             Draw the first line
             """
-            for i in range( len( self.line_one_accuracy ) ):
-                
-                if self.line_one_accuracy[i] == 'N':
-                    arcade.draw_text( self.line_one[i], COLUMN_ONE_WIDTH + i*100, LINE_ONE_HEIGHT, 
-                            arcade.color.WHITE, font_size=25, anchor_x="center" )
-                if self.line_one_accuracy[i] == 'W':
-                    arcade.draw_text( self.line_one[i], COLUMN_ONE_WIDTH + i*100, LINE_ONE_HEIGHT, 
-                            arcade.color.GOLDEN_POPPY, font_size=25, anchor_x="center" )
-                if self.line_one_accuracy[i] == 'C':
-                    arcade.draw_text( self.line_one[i], COLUMN_ONE_WIDTH + i*100, LINE_ONE_HEIGHT, 
-                            arcade.color.GO_GREEN, font_size=25, anchor_x="center" )
+            self.draw_line_one()
             
             """
             Draw the second line
             """
-            for i in range( len( self.line_two_accuracy ) ):
-                
-                if self.line_two_accuracy[i] == 'N':
-                    arcade.draw_text( self.line_two[i], COLUMN_ONE_WIDTH + i*100, LINE_TWO_HEIGHT, 
-                            arcade.color.WHITE, font_size=25, anchor_x="center" )
-                if self.line_two_accuracy[i] == 'W':
-                    arcade.draw_text( self.line_two[i], COLUMN_ONE_WIDTH + i*100, LINE_TWO_HEIGHT, 
-                            arcade.color.GOLDEN_POPPY, font_size=25, anchor_x="center" )
-                if self.line_two_accuracy[i] == 'C':
-                    arcade.draw_text( self.line_two[i], COLUMN_ONE_WIDTH + i*100, LINE_TWO_HEIGHT, 
-                            arcade.color.GO_GREEN, font_size=25, anchor_x="center" )
+            self.draw_line_two()
             
             
             if len(self.guess) == 1:
@@ -295,47 +361,17 @@ class PlayState ( arcade.View ):
             """
             Draw the first line
             """
-            for i in range( len( self.line_one_accuracy ) ):
-                
-                if self.line_one_accuracy[i] == 'N':
-                    arcade.draw_text( self.line_one[i], COLUMN_ONE_WIDTH + i*100, LINE_ONE_HEIGHT, 
-                            arcade.color.WHITE, font_size=25, anchor_x="center" )
-                if self.line_one_accuracy[i] == 'W':
-                    arcade.draw_text( self.line_one[i], COLUMN_ONE_WIDTH + i*100, LINE_ONE_HEIGHT, 
-                            arcade.color.GOLDEN_POPPY, font_size=25, anchor_x="center" )
-                if self.line_one_accuracy[i] == 'C':
-                    arcade.draw_text( self.line_one[i], COLUMN_ONE_WIDTH + i*100, LINE_ONE_HEIGHT, 
-                            arcade.color.GO_GREEN, font_size=25, anchor_x="center" )
+            self.draw_line_one()
             
             """
             Draw the second line
             """
-            for i in range( len( self.line_two_accuracy ) ):
-                
-                if self.line_two_accuracy[i] == 'N':
-                    arcade.draw_text( self.line_two[i], COLUMN_ONE_WIDTH + i*100, LINE_TWO_HEIGHT, 
-                            arcade.color.WHITE, font_size=25, anchor_x="center" )
-                if self.line_two_accuracy[i] == 'W':
-                    arcade.draw_text( self.line_two[i], COLUMN_ONE_WIDTH + i*100, LINE_TWO_HEIGHT, 
-                            arcade.color.GOLDEN_POPPY, font_size=25, anchor_x="center" )
-                if self.line_two_accuracy[i] == 'C':
-                    arcade.draw_text( self.line_two[i], COLUMN_ONE_WIDTH + i*100, LINE_TWO_HEIGHT, 
-                            arcade.color.GO_GREEN, font_size=25, anchor_x="center" )
+            self.draw_line_two()
             
             """
             Draw the third line
             """
-            for i in range( len( self.line_three_accuracy ) ):
-                
-                if self.line_three_accuracy[i] == 'N':
-                    arcade.draw_text( self.line_three[i], COLUMN_ONE_WIDTH + i*100, LINE_THREE_HEIGHT, 
-                            arcade.color.WHITE, font_size=25, anchor_x="center" )
-                if self.line_three_accuracy[i] == 'W':
-                    arcade.draw_text( self.line_three[i], COLUMN_ONE_WIDTH + i*100, LINE_THREE_HEIGHT, 
-                            arcade.color.GOLDEN_POPPY, font_size=25, anchor_x="center" )
-                if self.line_three_accuracy[i] == 'C':
-                    arcade.draw_text( self.line_three[i], COLUMN_ONE_WIDTH + i*100, LINE_THREE_HEIGHT, 
-                            arcade.color.GO_GREEN, font_size=25, anchor_x="center" )            
+            self.draw_line_three()        
             
             if len(self.guess) == 1:
                 arcade.draw_text( self.guess[0], COLUMN_ONE_WIDTH, LINE_FOUR_HEIGHT, 
@@ -382,62 +418,22 @@ class PlayState ( arcade.View ):
             """
             Draw the first line
             """
-            for i in range( len( self.line_one_accuracy ) ):
-                
-                if self.line_one_accuracy[i] == 'N':
-                    arcade.draw_text( self.line_one[i], COLUMN_ONE_WIDTH + i*100, LINE_ONE_HEIGHT, 
-                            arcade.color.WHITE, font_size=25, anchor_x="center" )
-                if self.line_one_accuracy[i] == 'W':
-                    arcade.draw_text( self.line_one[i], COLUMN_ONE_WIDTH + i*100, LINE_ONE_HEIGHT, 
-                            arcade.color.GOLDEN_POPPY, font_size=25, anchor_x="center" )
-                if self.line_one_accuracy[i] == 'C':
-                    arcade.draw_text( self.line_one[i], COLUMN_ONE_WIDTH + i*100, LINE_ONE_HEIGHT, 
-                            arcade.color.GO_GREEN, font_size=25, anchor_x="center" )
+            self.draw_line_one()
             
             """
             Draw the second line
             """
-            for i in range( len( self.line_two_accuracy ) ):
-                
-                if self.line_two_accuracy[i] == 'N':
-                    arcade.draw_text( self.line_two[i], COLUMN_ONE_WIDTH + i*100, LINE_TWO_HEIGHT, 
-                            arcade.color.WHITE, font_size=25, anchor_x="center" )
-                if self.line_two_accuracy[i] == 'W':
-                    arcade.draw_text( self.line_two[i], COLUMN_ONE_WIDTH + i*100, LINE_TWO_HEIGHT, 
-                            arcade.color.GOLDEN_POPPY, font_size=25, anchor_x="center" )
-                if self.line_two_accuracy[i] == 'C':
-                    arcade.draw_text( self.line_two[i], COLUMN_ONE_WIDTH + i*100, LINE_TWO_HEIGHT, 
-                            arcade.color.GO_GREEN, font_size=25, anchor_x="center" )
+            self.draw_line_two()
             
             """
             Draw the third line
             """
-            for i in range( len( self.line_three_accuracy ) ):
-                
-                if self.line_three_accuracy[i] == 'N':
-                    arcade.draw_text( self.line_three[i], COLUMN_ONE_WIDTH + i*100, LINE_THREE_HEIGHT, 
-                            arcade.color.WHITE, font_size=25, anchor_x="center" )
-                if self.line_three_accuracy[i] == 'W':
-                    arcade.draw_text( self.line_three[i], COLUMN_ONE_WIDTH + i*100, LINE_THREE_HEIGHT, 
-                            arcade.color.GOLDEN_POPPY, font_size=25, anchor_x="center" )
-                if self.line_three_accuracy[i] == 'C':
-                    arcade.draw_text( self.line_three[i], COLUMN_ONE_WIDTH + i*100, LINE_THREE_HEIGHT, 
-                            arcade.color.GO_GREEN, font_size=25, anchor_x="center" )
+            self.draw_line_three()  
             
             """
             Draw the fourth line
             """
-            for i in range( len( self.line_four_accuracy ) ):
-                
-                if self.line_four_accuracy[i] == 'N':
-                    arcade.draw_text( self.line_four[i], COLUMN_ONE_WIDTH + i*100, LINE_FOUR_HEIGHT, 
-                            arcade.color.WHITE, font_size=25, anchor_x="center" )
-                if self.line_four_accuracy[i] == 'W':
-                    arcade.draw_text( self.line_four[i], COLUMN_ONE_WIDTH + i*100, LINE_FOUR_HEIGHT, 
-                            arcade.color.GOLDEN_POPPY, font_size=25, anchor_x="center" )
-                if self.line_four_accuracy[i] == 'C':
-                    arcade.draw_text( self.line_four[i], COLUMN_ONE_WIDTH + i*100, LINE_FOUR_HEIGHT, 
-                            arcade.color.GO_GREEN, font_size=25, anchor_x="center" )
+            self.draw_line_four()
             
             
             if len(self.guess) == 1:
@@ -485,77 +481,28 @@ class PlayState ( arcade.View ):
             """
             Draw the first line
             """
-            for i in range( len( self.line_one_accuracy ) ):
-                
-                if self.line_one_accuracy[i] == 'N':
-                    arcade.draw_text( self.line_one[i], COLUMN_ONE_WIDTH + i*100, LINE_ONE_HEIGHT, 
-                            arcade.color.WHITE, font_size=25, anchor_x="center" )
-                if self.line_one_accuracy[i] == 'W':
-                    arcade.draw_text( self.line_one[i], COLUMN_ONE_WIDTH + i*100, LINE_ONE_HEIGHT, 
-                            arcade.color.GOLDEN_POPPY, font_size=25, anchor_x="center" )
-                if self.line_one_accuracy[i] == 'C':
-                    arcade.draw_text( self.line_one[i], COLUMN_ONE_WIDTH + i*100, LINE_ONE_HEIGHT, 
-                            arcade.color.GO_GREEN, font_size=25, anchor_x="center" )
+            self.draw_line_one()
             
             """
             Draw the second line
             """
-            for i in range( len( self.line_two_accuracy ) ):
-                
-                if self.line_two_accuracy[i] == 'N':
-                    arcade.draw_text( self.line_two[i], COLUMN_ONE_WIDTH + i*100, LINE_TWO_HEIGHT, 
-                            arcade.color.WHITE, font_size=25, anchor_x="center" )
-                if self.line_two_accuracy[i] == 'W':
-                    arcade.draw_text( self.line_two[i], COLUMN_ONE_WIDTH + i*100, LINE_TWO_HEIGHT, 
-                            arcade.color.GOLDEN_POPPY, font_size=25, anchor_x="center" )
-                if self.line_two_accuracy[i] == 'C':
-                    arcade.draw_text( self.line_two[i], COLUMN_ONE_WIDTH + i*100, LINE_TWO_HEIGHT, 
-                            arcade.color.GO_GREEN, font_size=25, anchor_x="center" )
+            self.draw_line_two()
             
             """
             Draw the third line
             """
-            for i in range( len( self.line_three_accuracy ) ):
-                
-                if self.line_three_accuracy[i] == 'N':
-                    arcade.draw_text( self.line_three[i], COLUMN_ONE_WIDTH + i*100, LINE_THREE_HEIGHT, 
-                            arcade.color.WHITE, font_size=25, anchor_x="center" )
-                if self.line_three_accuracy[i] == 'W':
-                    arcade.draw_text( self.line_three[i], COLUMN_ONE_WIDTH + i*100, LINE_THREE_HEIGHT, 
-                            arcade.color.GOLDEN_POPPY, font_size=25, anchor_x="center" )
-                if self.line_three_accuracy[i] == 'C':
-                    arcade.draw_text( self.line_three[i], COLUMN_ONE_WIDTH + i*100, LINE_THREE_HEIGHT, 
-                            arcade.color.GO_GREEN, font_size=25, anchor_x="center" )
+            self.draw_line_three()  
             
             """
             Draw the fourth line
             """
-            for i in range( len( self.line_four_accuracy ) ):
-                
-                if self.line_four_accuracy[i] == 'N':
-                    arcade.draw_text( self.line_four[i], COLUMN_ONE_WIDTH + i*100, LINE_FOUR_HEIGHT, 
-                            arcade.color.WHITE, font_size=25, anchor_x="center" )
-                if self.line_four_accuracy[i] == 'W':
-                    arcade.draw_text( self.line_four[i], COLUMN_ONE_WIDTH + i*100, LINE_FOUR_HEIGHT, 
-                            arcade.color.GOLDEN_POPPY, font_size=25, anchor_x="center" )
-                if self.line_four_accuracy[i] == 'C':
-                    arcade.draw_text( self.line_four[i], COLUMN_ONE_WIDTH + i*100, LINE_FOUR_HEIGHT, 
-                            arcade.color.GO_GREEN, font_size=25, anchor_x="center" )
+            self.draw_line_four()
             
             """
             Draw the fifth line
             """
-            for i in range( len( self.line_five_accuracy ) ):
-                
-                if self.line_five_accuracy[i] == 'N':
-                    arcade.draw_text( self.line_five[i], COLUMN_ONE_WIDTH + i*100, LINE_FIVE_HEIGHT, 
-                            arcade.color.WHITE, font_size=25, anchor_x="center" )
-                if self.line_five_accuracy[i] == 'W':
-                    arcade.draw_text( self.line_five[i], COLUMN_ONE_WIDTH + i*100, LINE_FIVE_HEIGHT, 
-                            arcade.color.GOLDEN_POPPY, font_size=25, anchor_x="center" )
-                if self.line_five_accuracy[i] == 'C':
-                    arcade.draw_text( self.line_five[i], COLUMN_ONE_WIDTH + i*100, LINE_FIVE_HEIGHT, 
-                            arcade.color.GO_GREEN, font_size=25, anchor_x="center" )
+            self.draw_line_five()
+            
             
             if len(self.guess) == 1:
                 arcade.draw_text( self.guess[0], COLUMN_ONE_WIDTH, LINE_SIX_HEIGHT, 
@@ -602,92 +549,32 @@ class PlayState ( arcade.View ):
             """
             Draw the first line
             """
-            for i in range( len( self.line_one_accuracy ) ):
-                
-                if self.line_one_accuracy[i] == 'N':
-                    arcade.draw_text( self.line_one[i], COLUMN_ONE_WIDTH + i*100, LINE_ONE_HEIGHT, 
-                            arcade.color.WHITE, font_size=25, anchor_x="center" )
-                if self.line_one_accuracy[i] == 'W':
-                    arcade.draw_text( self.line_one[i], COLUMN_ONE_WIDTH + i*100, LINE_ONE_HEIGHT, 
-                            arcade.color.GOLDEN_POPPY, font_size=25, anchor_x="center" )
-                if self.line_one_accuracy[i] == 'C':
-                    arcade.draw_text( self.line_one[i], COLUMN_ONE_WIDTH + i*100, LINE_ONE_HEIGHT, 
-                            arcade.color.GO_GREEN, font_size=25, anchor_x="center" )
+            self.draw_line_one()
             
             """
             Draw the second line
             """
-            for i in range( len( self.line_two_accuracy ) ):
-                
-                if self.line_two_accuracy[i] == 'N':
-                    arcade.draw_text( self.line_two[i], COLUMN_ONE_WIDTH + i*100, LINE_TWO_HEIGHT, 
-                            arcade.color.WHITE, font_size=25, anchor_x="center" )
-                if self.line_two_accuracy[i] == 'W':
-                    arcade.draw_text( self.line_two[i], COLUMN_ONE_WIDTH + i*100, LINE_TWO_HEIGHT, 
-                            arcade.color.GOLDEN_POPPY, font_size=25, anchor_x="center" )
-                if self.line_two_accuracy[i] == 'C':
-                    arcade.draw_text( self.line_two[i], COLUMN_ONE_WIDTH + i*100, LINE_TWO_HEIGHT, 
-                            arcade.color.GO_GREEN, font_size=25, anchor_x="center" )
+            self.draw_line_two()
             
             """
             Draw the third line
             """
-            for i in range( len( self.line_three_accuracy ) ):
-                
-                if self.line_three_accuracy[i] == 'N':
-                    arcade.draw_text( self.line_three[i], COLUMN_ONE_WIDTH + i*100, LINE_THREE_HEIGHT, 
-                            arcade.color.WHITE, font_size=25, anchor_x="center" )
-                if self.line_three_accuracy[i] == 'W':
-                    arcade.draw_text( self.line_three[i], COLUMN_ONE_WIDTH + i*100, LINE_THREE_HEIGHT, 
-                            arcade.color.GOLDEN_POPPY, font_size=25, anchor_x="center" )
-                if self.line_three_accuracy[i] == 'C':
-                    arcade.draw_text( self.line_three[i], COLUMN_ONE_WIDTH + i*100, LINE_THREE_HEIGHT, 
-                            arcade.color.GO_GREEN, font_size=25, anchor_x="center" )
+            self.draw_line_three()  
             
             """
             Draw the fourth line
             """
-            for i in range( len( self.line_four_accuracy ) ):
-                
-                if self.line_four_accuracy[i] == 'N':
-                    arcade.draw_text( self.line_four[i], COLUMN_ONE_WIDTH + i*100, LINE_FOUR_HEIGHT, 
-                            arcade.color.WHITE, font_size=25, anchor_x="center" )
-                if self.line_four_accuracy[i] == 'W':
-                    arcade.draw_text( self.line_four[i], COLUMN_ONE_WIDTH + i*100, LINE_FOUR_HEIGHT, 
-                            arcade.color.GOLDEN_POPPY, font_size=25, anchor_x="center" )
-                if self.line_four_accuracy[i] == 'C':
-                    arcade.draw_text( self.line_four[i], COLUMN_ONE_WIDTH + i*100, LINE_FOUR_HEIGHT, 
-                            arcade.color.GO_GREEN, font_size=25, anchor_x="center" )
+            self.draw_line_four()
             
             """
             Draw the fifth line
             """
-            for i in range( len( self.line_five_accuracy ) ):
-                
-                if self.line_five_accuracy[i] == 'N':
-                    arcade.draw_text( self.line_five[i], COLUMN_ONE_WIDTH + i*100, LINE_FIVE_HEIGHT, 
-                            arcade.color.WHITE, font_size=25, anchor_x="center" )
-                if self.line_five_accuracy[i] == 'W':
-                    arcade.draw_text( self.line_five[i], COLUMN_ONE_WIDTH + i*100, LINE_FIVE_HEIGHT, 
-                            arcade.color.GOLDEN_POPPY, font_size=25, anchor_x="center" )
-                if self.line_five_accuracy[i] == 'C':
-                    arcade.draw_text( self.line_five[i], COLUMN_ONE_WIDTH + i*100, LINE_FIVE_HEIGHT, 
-                            arcade.color.GO_GREEN, font_size=25, anchor_x="center" )
+            self.draw_line_five()
             
             """
             Draw the sixth line
             """
-            for i in range( len( self.line_six_accuracy ) ):
-                
-                if self.line_six_accuracy[i] == 'N':
-                    arcade.draw_text( self.line_five[i], COLUMN_ONE_WIDTH + i*100, LINE_FIVE_HEIGHT, 
-                            arcade.color.WHITE, font_size=25, anchor_x="center" )
-                if self.line_six_accuracy[i] == 'W':
-                    arcade.draw_text( self.line_five[i], COLUMN_ONE_WIDTH + i*100, LINE_SIX_HEIGHT, 
-                            arcade.color.GOLDEN_POPPY, font_size=25, anchor_x="center" )
-                if self.line_six_accuracy[i] == 'C':
-                    arcade.draw_text( self.line_five[i], COLUMN_ONE_WIDTH + i*100, LINE_SIX_HEIGHT, 
-                            arcade.color.GO_GREEN, font_size=25, anchor_x="center" )
+            self.draw_line_six()
         
     def on_update( self, delta_time ):
         
