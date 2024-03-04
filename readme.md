@@ -1,5 +1,10 @@
+# Wordle Clone
+
+### Authored by [Leon Hartley](https://github.com/hartleyleo)
+
 This is a wordle clone using the Python Arcade Library.
 
+## 🚀 Usage
 To run the code, follow these steps:
   1. simply put the code into any editor
   2. have arcade installed ( pip install arcade in a command window )
